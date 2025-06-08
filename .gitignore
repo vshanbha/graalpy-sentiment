@@ -1,0 +1,50 @@
+# Compiled Java class files
+*.class
+
+# Log file
+*.log
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.7z
+
+# IDE - IntelliJ IDEA #
+.idea/
+*.iws
+*.ipr
+*.iml
+
+# IDE - Eclipse #
+.settings/
+bin/
+tmp/
+.apt_generated/
+.classpath
+.project
+
+# IDE - NetBeans #
+nbproject/
+
+# Build output folders
+/target/
+/build/
+
+# Spring specific
+/src/main/resources/static/
+
+# OS generated files #
+.DS_Store
+Thumbs.db
+
+# Python Virtual Environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# GraalVM Native Image
+target/native-image/
