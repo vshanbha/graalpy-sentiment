@@ -35,9 +35,9 @@ sentiment-analysis-app
    cd sentiment-analysis-app
    ```
 
-2. **Install Python dependencies:**
+2. **Optional: Install Python dependencies:**
 
-   It's a good idea to have a virtual environment for your Python project to manage dependencies:
+   This step is completely optional. However, if we want to modify the python code then it's a good idea to have a virtual environment for your Python project to manage dependencies:
 
    ```
    python3 -m venv .venv
@@ -56,8 +56,15 @@ sentiment-analysis-app
    ```
    pip install textblob
    ```
+   We can now run the python script inside the venv:
+   
+   ```
+   python src/python/sentiment_analysis.py
+   ```
 
-
+   The Java application uses Graalpy to run the Python part so the venv is not used at all. However it helps in editing and testing the python code indepent of the Java dependencies and its much faster to work with Python this way. 
+   
+   
 3. **Build the Java application:**
    Use Maven to build the project:
    ```
