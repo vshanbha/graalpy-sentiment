@@ -22,7 +22,7 @@ sentiment-analysis-app
 
 ## Requirements
 
-- Java 11 or higher
+- Java 17 or higher
 - Maven
 - Python 3.x
 - TextBlob library for Python
