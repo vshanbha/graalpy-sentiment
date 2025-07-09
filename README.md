@@ -7,15 +7,14 @@ This project is a sentiment analysis application that provides an API for analyz
 ```
 sentiment-analysis-app
 ├── src
-│   ├── main
-│   │   ├── java
-│   │   │   └── com
-│   │   │       └── example
-│   │   │           └── SentimentAnalysisController.java
-│   │   └── resources
-│   │       └── application.properties
-│   └── python
-│       └── sentiment_analysis.py
+│   └── main
+│       ├── java
+│       │   └── com
+│       │       └── example
+│       │           └── SentimentAnalysisController.java
+│       └── resources
+│           ├── application.properties
+│           └── sentiment_analysis.py
 ├── pom.xml
 └── README.md
 ```
@@ -37,7 +36,7 @@ sentiment-analysis-app
 
 2. **Optional: Install Python dependencies:**
 
-   This step is completely optional. However, if we want to modify the python code then it's a good idea to have a virtual environment for your Python project to manage dependencies:
+   This step is completely optional. However, if we want to modify the python code then it's a good idea to have a virtual environment for our Python project to manage dependencies:
 
    ```
    python3 -m venv .venv
@@ -51,35 +50,59 @@ sentiment-analysis-app
    ```
    
    The Python script sentiment_analysis.py uses the `textblob` library. 
-   Therefore, you need to install it.  You can do this using pip:
+   Therefore, we need to install it.  We can do this using pip:
 
    ```
    pip install textblob
    ```
+   
    We can now run the python script inside the venv:
    
    ```
    python src/python/sentiment_analysis.py
    ```
 
-   The Java application uses Graalpy to run the Python part so the venv is not used at all. However it helps in editing and testing the python code indepent of the Java dependencies and its much faster to work with Python this way. 
+   The Java application uses Graalpy to run the Python part so the venv is not used at all. However it helps in editing and testing the Python code independent of the Java dependencies and its much faster to work with Python this way. 
    
    
 3. **Build the Java application:**
    Use Maven to build the project:
+   
    ```
    mvn clean install
    ```
+   
+   This creates the executable jar inside the target directory. The jar would be named as graalpy-sentiment-<version>.jar
+   
+   Now the jar can be executed as:
+   
+   ```
+   java -jar graalpy-sentiment-<version>.jar
+   ```
+   
+   Remember to replace the <version> place holder with the actual version number.
 
 4. **Run the application:**
-   You can run the Spring Boot application using:
+   We can run the Spring Boot application using:
+   
    ```
    mvn spring-boot:run
    ```
 
 5. **Access the API:**
-   The API will be available at `http://localhost:8080/analyze` (or the port specified in `application.properties`). You can send a POST request with the text to analyze.
+   The API will be available at `http://localhost:8080/analyze` (or the port specified in `application.properties`). We can send a POST request with the text to analyze.
+   
+6. **Creating native executable:**
+   We can run create a native executable file using the GraalVM. We need to ensure that we have the (GraalVM)[https://www.oracle.com/uk/java/technologies/downloads/#graalvmjava24] installed on our build machine. Note that GraalVM native executable only works on the platform on which we built the executable.
+   
+   The native image build command itself is already included into the `pom.xml` courtesy Spring Boot:
+   
+   ```
+   mvn -Pnative native:compile
+   ```
 
+   This produces a executable named `graalpy-sentiment` in the target folder. The compilation takes much longer time than the jar compilation.
+   
 ## Usage
 
 To analyze sentiment, send a GET request to the `/analyze` endpoint with a JSON body containing the text. For example:
@@ -95,7 +118,7 @@ The response will include the sentiment score and classification.
 
 ### Build a Docker Image
 
-You can build a Docker image using the Spring Boot Maven plugin:
+We can build a Docker image using the Spring Boot Maven plugin:
 
 ```
 mvn clean spring-boot:build-image
@@ -106,14 +129,14 @@ mvn clean spring-boot:build-image
 To run the Docker container, use the following command:
 
 ```
-docker run -d -p 8080:8080 your-image-name
+docker run -d -p 8080:8080 --name your-sentiment-app your-image-name 
 ```
 
-This will start the application inside a Docker container, mapping port 8080 on your host to port 8080 in the container.
+This will start the application inside a Docker container, mapping port 8080 on our host to port 8080 in the container.
 
 ### Providing an External Python Script
 
-To provide an external Python script to the Docker container, you can mount a volume and set the `JAVA_OPTS` environment variable:
+To provide an external Python script to the Docker container, we can mount a volume and set the `JAVA_OPTS` environment variable:
 
 ```
 docker run -d -p 8080:8080 \ -v /path/to/your/python/scripts:/opt/python_scripts \ -e JAVA_OPTS="-Dexternal.python.script=/opt/python_scripts/external_sentiment_analysis.py" \ your-image-name
@@ -121,7 +144,7 @@ docker run -d -p 8080:8080 \ -v /path/to/your/python/scripts:/opt/python_scripts
 
 Explanation:
 
--   `-v /path/to/your/python/scripts:/opt/python_scripts`: This mounts the local directory `/path/to/your/python/scripts` on your host machine to the directory `/opt/python_scripts` inside the container.
+-   `-v /path/to/your/python/scripts:/opt/python_scripts`: This mounts the local directory `/path/to/your/python/scripts` on our host machine to the directory `/opt/python_scripts` inside the container.
 -   `-e JAVA_OPTS="-Dexternal.python.script=/opt/python_scripts/external_sentiment_analysis.py"`: This sets the `JAVA_OPTS` environment variable to include the `-Dexternal.python.script` system property, pointing to the location of the Python script inside the container.
 
 Ensure that the Python script is accessible inside the container at the specified path (`/opt/python_scripts/external_sentiment_analysis.py` in this example).

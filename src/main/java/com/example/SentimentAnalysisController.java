@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 
 import org.graalvm.polyglot.Context;
 import org.graalvm.polyglot.Source;
@@ -21,6 +19,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @SpringBootApplication
 @RestController
