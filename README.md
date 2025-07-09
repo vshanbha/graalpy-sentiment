@@ -29,8 +29,10 @@ sentiment-analysis-app
 ## Setup Instructions
 
 1. **Clone the repository:**
+
    ```
-   git clone <repository-url>
+   git clone 
+   
    cd sentiment-analysis-app
    ```
 
@@ -59,13 +61,14 @@ sentiment-analysis-app
    We can now run the python script inside the venv:
    
    ```
-   python src/python/sentiment_analysis.py
+   python src/main/resources/sentiment_analysis.py
    ```
 
    The Java application uses Graalpy to run the Python part so the venv is not used at all. However it helps in editing and testing the Python code independent of the Java dependencies and its much faster to work with Python this way. 
    
    
 3. **Build the Java application:**
+
    Use Maven to build the project:
    
    ```
@@ -83,6 +86,7 @@ sentiment-analysis-app
    Remember to replace the <version> place holder with the actual version number.
 
 4. **Run the application:**
+
    We can run the Spring Boot application using:
    
    ```
@@ -90,9 +94,11 @@ sentiment-analysis-app
    ```
 
 5. **Access the API:**
+
    The API will be available at `http://localhost:8080/analyze` (or the port specified in `application.properties`). We can send a POST request with the text to analyze.
    
 6. **Creating native executable:**
+
    We can run create a native executable file using the GraalVM. We need to ensure that we have the [GraalVM](https://www.oracle.com/uk/java/technologies/downloads/#graalvmjava24) installed on our build machine. Note that GraalVM native executable only works on the platform on which we built the executable.
    
    The native image build command itself is already included into the `pom.xml` courtesy Spring Boot:
