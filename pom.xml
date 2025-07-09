@@ -7,33 +7,28 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.3</version>
+	</parent>
+
     <properties>
         <java.version>17</java.version>
-        <spring.boot.version>2.5.4</spring.boot.version>
-        <graalvm.version>24.2.0</graalvm.version>
+        <spring.boot.version>3.5.3</spring.boot.version>
+        <graalvm.version>24.2.1</graalvm.version>
     </properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 		  <groupId>org.graalvm.polyglot</groupId>
 		  <artifactId>python</artifactId> 
@@ -51,7 +46,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring.boot.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -62,10 +56,11 @@
                 <configuration>
                     <mainClass>com.example.SentimentAnalysisController</mainClass>
                 </configuration>
-            </plugin>
+			</plugin>
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
+                
             </plugin>
 			<plugin>
 				<groupId>org.graalvm.python</groupId>
@@ -76,7 +71,7 @@
 			      		<configuration>
 			        		<packages>
 			          			<!-- Select Python packages to install via pip. -->
-			          			<package>textblob</package>
+			          			<package>textblob==0.19.0</package>
 			        		</packages>
 			      		</configuration>
 			      		<goals>
@@ -87,12 +82,6 @@
 			</plugin>            
         </plugins>
 	    <resources>
-	        <resource>
-	            <directory>src/python</directory>
-	            <includes>
-	                <include>sentiment_analysis.py</include>
-	            </includes>
-	        </resource>
 	        <resource>
 	            <directory>src/main/resources</directory>
 	        </resource>
