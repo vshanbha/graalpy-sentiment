@@ -22,7 +22,7 @@ jobs:
     - name: Install GraalVM
       uses: graalvm/setup-graalvm@v1
       with:
-        version: '24'
+        version: '24.0.0'
         java-version: '17'
         components: native-image
         cache: maven
