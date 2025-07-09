@@ -93,7 +93,7 @@ sentiment-analysis-app
    The API will be available at `http://localhost:8080/analyze` (or the port specified in `application.properties`). We can send a POST request with the text to analyze.
    
 6. **Creating native executable:**
-   We can run create a native executable file using the GraalVM. We need to ensure that we have the (GraalVM)[https://www.oracle.com/uk/java/technologies/downloads/#graalvmjava24] installed on our build machine. Note that GraalVM native executable only works on the platform on which we built the executable.
+   We can run create a native executable file using the GraalVM. We need to ensure that we have the [GraalVM](https://www.oracle.com/uk/java/technologies/downloads/#graalvmjava24) installed on our build machine. Note that GraalVM native executable only works on the platform on which we built the executable.
    
    The native image build command itself is already included into the `pom.xml` courtesy Spring Boot:
    
@@ -101,7 +101,7 @@ sentiment-analysis-app
    mvn -Pnative native:compile
    ```
 
-   This produces a executable named `graalpy-sentiment` in the target folder. The compilation takes much longer time than the jar compilation.
+   This produces a executable named `graalpy-sentiment` in the target folder. The compilation takes much longer time the jar compilation.
    
 ## Usage
 
@@ -149,10 +149,22 @@ Explanation:
 
 Ensure that the Python script is accessible inside the container at the specified path (`/opt/python_scripts/external_sentiment_analysis.py` in this example).
 
+## Project Documentation
+
+Notes about various files are available under [Project Documentation](project_documentation.md) 
 
 ## Contributing
 
+Contributions are welcome! 
 Feel free to submit issues or pull requests for improvements or bug fixes.
+
+Please follow these guidelines for bug fixes:
+
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Write tests for your changes.
+4.  Submit a pull request.
+
 
 ## License
 
