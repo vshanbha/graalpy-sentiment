@@ -60,7 +60,11 @@
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
                 <artifactId>native-maven-plugin</artifactId>
-                
+			    <configuration>
+			        <buildArgs>
+			            <arg>-march=compatibility</arg>
+			        </buildArgs>
+			    </configuration>                
             </plugin>
 			<plugin>
 				<groupId>org.graalvm.python</groupId>
