@@ -32,6 +32,12 @@ jobs:
         components: native-image
         cache: maven
         native-image-job-reports: 'true'
+    - name: Print Java versions
+      run: |
+        echo "GRAALVM_HOME: $GRAALVM_HOME"
+        echo "JAVA_HOME: $JAVA_HOME"
+        java --version
+        native-image --version        
     - name: Build Native Image
       run: mvn -Pnative native:compile
 #    - name: Create Release
