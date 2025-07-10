@@ -19,6 +19,8 @@ sentiment-analysis-app
 └── README.md
 ```
 
+Notes about various files are available under [Project Documentation](project_documentation.md) 
+
 ## Requirements
 
 - Java 17 or higher
@@ -155,9 +157,6 @@ Explanation:
 
 Ensure that the Python script is accessible inside the container at the specified path (`/opt/python_scripts/external_sentiment_analysis.py` in this example).
 
-## Project Documentation
-
-Notes about various files are available under [Project Documentation](project_documentation.md) 
 
 ## Contributing
 
