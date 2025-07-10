@@ -26,9 +26,9 @@ jobs:
     - name: Install GraalVM
       uses: graalvm/setup-graalvm@v1
       with:  
-        java-version: '17'
+        java-version: '24'
         distribution: 'graalvm'
-        version: '24.2.1'
+#        version: '24.2.1'
         components: native-image
         cache: maven
         native-image-job-reports: 'true'
