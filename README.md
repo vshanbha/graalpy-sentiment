@@ -174,3 +174,7 @@ Please follow these guidelines for bug fixes:
 ## License
 
 This project is licensed under the MIT License.
+
+## Status Badges
+
+[![Build](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/maven.yml)
