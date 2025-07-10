@@ -1,4 +1,4 @@
-name: Java CI Release with Maven
+name: Release
 permissions:
   contents: write
 
