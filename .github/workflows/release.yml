@@ -41,8 +41,8 @@ jobs:
         echo "JAVA_HOME: $JAVA_HOME"
         java --version
         native-image --version        
-    - name: Build Native Image
-      run: mvn -Pnative native:compile
+#    - name: Build Native Image
+#      run: mvn -Pnative native:compile
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -59,11 +59,11 @@ jobs:
         asset_path: ./target/*.jar
         asset_name: graalpy-sentiment-${{ github.ref_name }}.jar
         asset_content_type: application/java-archive
-    - name: Upload Native Image Asset
-      id: upload-native-asset
-      uses: actions/upload-release-asset@v1
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./target/*
-        asset_name: graalpy-sentiment
-        asset_content_type: application/octet-stream
+ #   - name: Upload Native Image Asset
+ #     id: upload-native-asset
+ #     uses: actions/upload-release-asset@v1
+ #     with:
+ #       upload_url: ${{ steps.create_release.outputs.upload_url }}
+ #       asset_path: ./target/*
+ #       asset_name: graalpy-sentiment
+ #       asset_content_type: application/octet-stream
