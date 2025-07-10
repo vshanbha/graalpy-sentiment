@@ -91,7 +91,9 @@ public class SentimentAnalysisController {
             Value result = analyzeSentimentFunction.execute(text);
             return ResponseEntity.ok(result.toString());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error analyzing sentiment: " + e.getMessage());
+            System.err.println("Error analyzing sentiment: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while analyzing sentiment.");
         }
     }
 
