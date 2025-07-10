@@ -26,6 +26,7 @@ jobs:
       with:  
         java-version: '17'
         distribution: 'graalvm'
+        version: '24.2.1'
         components: native-image
         cache: maven
         native-image-job-reports: 'true'
