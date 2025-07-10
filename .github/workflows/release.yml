@@ -4,31 +4,34 @@ permissions:
 
 on:
   push:
-#    tags:
-#      - 'R-*'
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    tags:
+      - 'v*'
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
-#    - name: Set up JDK 17
-#      uses: actions/setup-java@v4
-#      with:
-#        java-version: '17'
-#        distribution: 'temurin'
-#        cache: maven
-#    - name: Build with Maven
-#      run: mvn -B package --file pom.xml
+    - name: Extract version from git tag
+      id: version
+      run: |
+        TAG_NAME="${GITHUB_REF##*/}"         # e.g., v1.2.3 or 1.2.3
+        VERSION="${TAG_NAME#v}"               # remove 'v' prefix if present
+        echo "TAG_VERSION=$VERSION" >> $GITHUB_ENV
+    
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
     - name: Install GraalVM
       uses: graalvm/setup-graalvm@v1
       with:  
         java-version: '24'
         distribution: 'graalvm'
-#        version: '24.2.1'
         components: native-image
         cache: maven
         native-image-job-reports: 'true'
@@ -40,27 +43,27 @@ jobs:
         native-image --version        
     - name: Build Native Image
       run: mvn -Pnative native:compile
-#    - name: Create Release
-#      id: create_release
-#      uses: actions/create-release@v1
-#      with:
-#        tag_name: ${{ github.ref_name }}
-#        release_name: Release ${{ github.ref_name }}
-#        draft: false
-#        prerelease: false
-#    - name: Upload Release Asset
-#      id: upload-release-asset
-#      uses: actions/upload-release-asset@v1
-#      with:
-#        upload_url: ${{ steps.create_release.outputs.upload_url }}
-#        asset_path: ./target/*.jar
-#        asset_name: your-app-name.jar
-#        asset_content_type: application/java-archive
-#    - name: Upload Native Image Asset
-#      id: upload-native-asset
-#      uses: actions/upload-release-asset@v1
-#      with:
-#        upload_url: ${{ steps.create_release.outputs.upload_url }}
-#        asset_path: ./target/your-app-name
-#        asset_name: your-app-name-linux
-#        asset_content_type: application/octet-stream
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      with:
+        tag_name: ${{ github.ref_name }}
+        release_name: Release ${{ github.ref_name }}
+        draft: false
+        prerelease: false
+    - name: Upload Release Asset
+      id: upload-release-asset
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/*.jar
+        asset_name: graalpy-sentiment-${{ github.ref_name }}.jar
+        asset_content_type: application/java-archive
+    - name: Upload Native Image Asset
+      id: upload-native-asset
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/*
+        asset_name: graalpy-sentiment
+        asset_content_type: application/octet-stream
