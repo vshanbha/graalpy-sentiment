@@ -22,6 +22,8 @@ sentiment-analysis-app
 └── README.md
 ```
 
+Notes about various files are available under [Project Documentation](https://github.com/vshanbha/graalpy-sentiment/wiki/Project-Documentation) 
+
 ## Requirements
 
 - Java 17 or higher
