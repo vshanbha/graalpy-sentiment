@@ -22,7 +22,7 @@ sentiment-analysis-app
 └── README.md
 ```
 
-Notes about various files are available under [Project Documentation](wiki/Project-Documentation) 
+Notes about various files are available under [Project Documentation](https://github.com/vshanbha/graalpy-sentiment/wiki/Project-Documentation) 
 
 ## Requirements
 
