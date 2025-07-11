@@ -1,6 +1,6 @@
 # Sentiment Analysis Application
 
-This project is a sentiment analysis application that provides an API for analyzing the sentiment of a given text. The application is built using Java with Spring Boot for the API and Python with the TextBlob library for performing sentiment analysis.
+This project is a sentiment analysis application that provides an API for analyzing the sentiment of a given text. The application is built using Java with Spring Boot for the API and Python with the TextBlob library for performing sentiment analysis. [GraalPy](https://www.graalvm.org/python/) is used to embed the Python runtime inside Java.
 
 [![Build](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/maven.yml)
 [![CodeQL](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/github-code-scanning/codeql)
