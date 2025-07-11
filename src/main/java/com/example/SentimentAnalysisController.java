@@ -16,6 +16,8 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,7 +55,7 @@ public class SentimentAnalysisController {
         try {
             polyglotContext = GraalPyResources.createContext();
 
-            polyglotContext.eval(PYTHON, "print('Hello from GraalPy!')");
+//            polyglotContext.eval(PYTHON, "print('Hello from GraalPy!')");
 
             String scriptPath = (externalPythonScript != null && !externalPythonScript.isEmpty()) ?
                     externalPythonScript : pythonScriptPath;
@@ -83,20 +85,30 @@ public class SentimentAnalysisController {
 
     @GetMapping
     public ResponseEntity<String> analyzeSentiment(@RequestParam String text) {
+        return analyzeSentimentInternal(text);
+    }
+
+    @PostMapping
+    public ResponseEntity<String> analyzeSentimentPost(@RequestBody String text) {
+        return analyzeSentimentInternal(text);
+    }
+
+    private ResponseEntity<String> analyzeSentimentInternal(String text) {
         if (analyzeSentimentFunction == null) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Python function not initialized.");
         }
 
         try {
             Value result = analyzeSentimentFunction.execute(text);
-            return ResponseEntity.ok(result.toString());
+            System.out.println("Sentiment analysis result: " + result.asString());
+            return ResponseEntity.ok(result.asString());
         } catch (Exception e) {
             System.err.println("Error analyzing sentiment: " + e.getMessage());
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while analyzing sentiment.");
         }
     }
-
+    
     @PreDestroy
     public void close() {
         polyglotContext.close(true);
