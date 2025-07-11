@@ -9,10 +9,10 @@ This project is a sentiment analysis application that provides an API for analyz
 Setup instructions for developers may be found on the [Developer Setup Instructions Wiki](https://github.com/vshanbha/graalpy-sentiment/wiki/Setup-Instructions)
 
 ## Configuration Instructions
-The Project uses standard Spring Boot configuration options. More information available under [Project Configuration](https://github.com/vshanbha/graalpy-sentiment/wiki/Project-Configuration)
+The Project uses standard Spring Boot configuration options. More information available under [Application Configuration](https://github.com/vshanbha/graalpy-sentiment/wiki/Application-Configuration)
 
-## Project Documentation
-Notes about various files are available under [Project Documentation](https://github.com/vshanbha/graalpy-sentiment/wiki/Project-Documentation) 
+## Code Documentation
+Notes about various files are available under [Code Documentation](https://github.com/vshanbha/graalpy-sentiment/wiki/Application-Code-Documentation) 
 
 ## Contributing
 
