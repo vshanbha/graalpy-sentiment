@@ -22,7 +22,7 @@ sentiment-analysis-app
 └── README.md
 ```
 
-Notes about various files are available under [Project Documentation](project_documentation.md) 
+Notes about various files are available under [Project Documentation](./wiki/Project-Documentation) 
 
 ## Requirements
 
