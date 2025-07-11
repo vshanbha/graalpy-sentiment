@@ -7,7 +7,7 @@ on:
     tags:
       - 'v*'
 jobs:
-  build:
+  jar-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -48,6 +48,18 @@ jobs:
         asset_path: ./target/graalpy-sentiment-${{ github.ref_name }}.jar
         asset_name: graalpy-sentiment-${{ github.ref_name }}.jar
         asset_content_type: application/java-archive
+
+  native-build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Extract version from git tag
+      id: version
+      run: |
+        TAG_NAME="${GITHUB_REF##*/}"         # e.g., v1.2.3 or 1.2.3
+        VERSION="${TAG_NAME#v}"               # remove 'v' prefix if present
+        echo "TAG_VERSION=$VERSION" >> $GITHUB_ENV   
     - name: Install GraalVM
       uses: graalvm/setup-graalvm@v1
       with:  
