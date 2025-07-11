@@ -1,13 +1,15 @@
 # Sentiment Analysis Application
 
-This project is a sentiment analysis application that provides an API for analyzing the sentiment of a given text. The application is built using Java with Spring Boot for the API and Python with the TextBlob library for performing sentiment analysis. [GraalPy](https://www.graalvm.org/python/) is used to embed the Python runtime inside Java.
+This project is a sentiment analysis application that provides an API for analyzing the sentiment of a given text. The application is built using Java with Spring Boot for the API and Python with the TextBlob library for performing sentiment analysis. [GraalPy](https://www.graalvm.org/python/) is used to embed the Python runtime inside Java. Full Project documentation available on the [Wiki Page](https://github.com/vshanbha/graalpy-sentiment/wiki)
 
 [![Build](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/maven.yml)
 [![CodeQL](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/github-code-scanning/codeql)
 
 ## Developer Setup Instructions
-
 Setup instructions for developers may be found on the [Developer Setup Instructions Wiki](https://github.com/vshanbha/graalpy-sentiment/wiki/Setup-Instructions)
+
+## Configuration Instructions
+The Project uses standard Spring Boot configuration options. More information available under [Project Configuration](https://github.com/vshanbha/graalpy-sentiment/wiki/Project-Configuration)
 
 ## Project Documentation
 Notes about various files are available under [Project Documentation](https://github.com/vshanbha/graalpy-sentiment/wiki/Project-Documentation) 
