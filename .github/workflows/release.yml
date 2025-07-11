@@ -26,20 +26,8 @@ jobs:
         cache: maven
     - name: Build with Maven
       run: mvn -B package --file pom.xml
-    - name: Install GraalVM
-      uses: graalvm/setup-graalvm@v1
-      with:  
-        java-version: '24'
-        distribution: 'graalvm'
-        components: native-image
-        cache: maven
-        native-image-job-reports: 'true'
-    - name: Print Java versions
-      run: |
-        echo "GRAALVM_HOME: $GRAALVM_HOME"
-        echo "JAVA_HOME: $JAVA_HOME"
-        java --version
-        native-image --version        
+    - name: List contents of target directory
+      run: ls -l ./target/
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
@@ -60,6 +48,20 @@ jobs:
         asset_path: ./target/graalpy-sentiment-${{ github.ref_name }}.jar
         asset_name: graalpy-sentiment-${{ github.ref_name }}.jar
         asset_content_type: application/java-archive
+    - name: Install GraalVM
+      uses: graalvm/setup-graalvm@v1
+      with:  
+        java-version: '24'
+        distribution: 'graalvm'
+        components: native-image
+        cache: maven
+        native-image-job-reports: 'true'
+    - name: Print Java versions
+      run: |
+        echo "GRAALVM_HOME: $GRAALVM_HOME"
+        echo "JAVA_HOME: $JAVA_HOME"
+        java --version
+        native-image --version        
     - name: Build Native Image
       run: mvn -Pnative native:compile
     - name: List contents of target directory
