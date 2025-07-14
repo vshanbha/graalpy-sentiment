@@ -45,6 +45,6 @@ Thumbs.db
 venv/
 __pycache__/
 *.pyc
-
+.python-version
 # GraalVM Native Image
 target/native-image/

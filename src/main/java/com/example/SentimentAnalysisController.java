@@ -31,6 +31,7 @@ public class SentimentAnalysisController {
 	static final String PYTHON = "python";
 
 	private Context polyglotContext;
+
 	private Value analyzeSentimentFunction;
 
 	@org.springframework.beans.factory.annotation.Value("${python.script.path:sentiment_analysis.py}")
@@ -95,10 +96,7 @@ public class SentimentAnalysisController {
 		}
 
 		try {
-			long start = System.nanoTime();
 			Value result = analyzeSentimentFunction.execute(text);
-			long end = System.nanoTime();
-			System.out.println("Python execution time: " + ((end - start) / 1_000_000) + " ms");
 			return ResponseEntity.ok(result.asString());
 		} catch (Exception e) {
 			System.err.println("Error analyzing sentiment: " + e.getMessage());

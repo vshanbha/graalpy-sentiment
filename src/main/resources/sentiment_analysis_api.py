@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from textblob import TextBlob
+from sentiment_analysis import analyze_sentiment
 import json
 
 app = Flask(__name__)
@@ -11,18 +11,8 @@ def analyze():
     elif request.method == 'POST':
         text = request.get_data(as_text=True)
 
-    analysis = TextBlob(text)
-    sentiment_score = analysis.sentiment.polarity
-    sentiment_classification = (
-        "positive" if sentiment_score > 0.1 else
-        "negative" if sentiment_score < -0.1 else
-        "neutral"
-    )
-
-    response = {
-        "score": sentiment_score,
-        "classification": sentiment_classification
-    }
+    sentiment_json = analyze_sentiment(text)
+    response = json.loads(sentiment_json)
 
     return jsonify(response)
 
