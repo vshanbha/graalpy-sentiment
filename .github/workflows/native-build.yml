@@ -14,6 +14,17 @@ jobs:
     runs-on: self-hosted
 
     steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ github.event.workflow_run.id }}
+          path: ./artifacts
+          merge-multiple: true
+      
+      - name: List contents of artifacts
+        run: |
+          echo "Listing contents of downloaded artifacts:"
+          ls -R ./artifacts    
       - name: Download tag-name artifact
         uses: actions/download-artifact@v4
         with:
