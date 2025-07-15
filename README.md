@@ -4,7 +4,7 @@ This project is a sentiment analysis application that provides an API for analyz
 
 [![Build](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/maven.yml)
 [![CodeQL](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/github-code-scanning/codeql)
-
+[![Native Build](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/native-build.yml/badge.svg)](https://github.com/vshanbha/graalpy-sentiment/actions/workflows/native-build.yml)
 ## Developer Setup Instructions
 Setup instructions for developers may be found on the [Developer Setup Instructions Wiki](https://github.com/vshanbha/graalpy-sentiment/wiki/Setup-Instructions)
 
