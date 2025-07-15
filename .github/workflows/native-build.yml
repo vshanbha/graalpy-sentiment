@@ -4,7 +4,6 @@ on:
   workflow_run:
     workflows: ["Release"]
     types: [completed]
-    branches: [main]
 
 permissions:
   contents: write  # Needed to upload assets to a release
@@ -15,25 +14,33 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-      - name: Extract version from tag
-        id: extract_version
+      - name: Download tag-name artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: tag-name
+
+      - name: Load tag name
         run: |
-          TAG_NAME="${GITHUB_REF##*/}"         # e.g., v1.2.3
-          VERSION="${TAG_NAME#v}"              # Strip the 'v' prefix
-          echo "TAG_VERSION=$VERSION" >> $GITHUB_ENV
+          TAG_NAME=$(cat tag_name.txt)
           echo "RELEASE_TAG=$TAG_NAME" >> $GITHUB_ENV
+          echo "TAG_VERSION=${TAG_NAME#v}" >> $GITHUB_ENV
+
       - name: Download upload_url artifact
         uses: actions/download-artifact@v4
         with:
           name: upload-url
-  
-      - name: Load upload URL from artifact
+
+      - name: Load upload URL
         run: |
           UPLOAD_URL=$(cat upload_url.txt)
           echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
-          echo $UPLOAD_URL
+
+      - name: Checkout source for tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.RELEASE_TAG }}
+
+      # Step 4: Setup GraalVM
       - name: Setup GraalVM
         uses: graalvm/setup-graalvm@v1
         with:
@@ -60,8 +67,10 @@ jobs:
 
       - name: Build Native Image
         run: mvn -Pnative native:compile
-      - name: List target directory
-        run: ls -lh target/
+
+      - name: List contents of target directory
+        run: ls -lh ./target/
+
       - name: Upload Native Image Asset
         id: upload-native-asset
         uses: actions/upload-release-asset@v1
