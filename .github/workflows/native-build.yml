@@ -1,0 +1,37 @@
+name: Release
+permissions:
+  contents: write
+
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  native-build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Extract version from git tag
+      id: version
+      run: |
+        TAG_NAME="${GITHUB_REF##*/}"         # e.g., v1.2.3 or 1.2.3
+        VERSION="${TAG_NAME#v}"               # remove 'v' prefix if present
+        echo "TAG_VERSION=$VERSION" >> $GITHUB_ENV   
+    - name: Install GraalVM
+      uses: graalvm/setup-graalvm@v1
+      with:  
+        java-version: '24'
+        distribution: 'graalvm'
+        components: native-image
+        cache: maven
+        native-image-job-reports: 'true'
+    - name: Print Java versions
+      run: |
+        echo "GRAALVM_HOME: $GRAALVM_HOME"
+        echo "JAVA_HOME: $JAVA_HOME"
+        java --version
+        native-image --version        
+    - name: Build Native Image
+      run: mvn -Pnative native:compile
+    - name: List contents of target directory
+      run: ls -l ./target/
