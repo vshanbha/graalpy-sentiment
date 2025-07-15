@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v4
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
           run-id: ${{ github.event.workflow_run.id }}
           path: ./artifacts
@@ -27,6 +29,8 @@ jobs:
           ls -R ./artifacts    
       - name: Download tag-name artifact
         uses: actions/download-artifact@v4
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         with:
           name: tag-name
           run-id: ${{ github.event.workflow_run.id }}
@@ -40,6 +44,8 @@ jobs:
 
       - name: Download upload_url artifact
         uses: actions/download-artifact@v4
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}         
         with:
           name: upload-url
           run-id: ${{ github.event.workflow_run.id }}
