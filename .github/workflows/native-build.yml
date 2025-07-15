@@ -36,7 +36,7 @@ jobs:
 
       - name: Load tag name
         run: |
-          TAG_NAME=$(cat tag_name.txt)
+          TAG_NAME=$(cat ./artifacts/tag_name.txt)
           echo "RELEASE_TAG=$TAG_NAME" >> $GITHUB_ENV
           echo "TAG_VERSION=${TAG_NAME#v}" >> $GITHUB_ENV
 
@@ -50,7 +50,7 @@ jobs:
 
       - name: Load upload URL
         run: |
-          UPLOAD_URL=$(cat upload_url.txt)
+          UPLOAD_URL=$(cat ./artifacts/upload_url.txt)
           echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
 
       - name: Checkout source for tag
