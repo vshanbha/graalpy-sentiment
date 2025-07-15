@@ -1,9 +1,10 @@
 name: Native Build
 
 on:
-  push:
-    tags:
-      - 'v*'
+  workflow_run:
+    workflows: ["Release"]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: write  # Needed to upload assets to a release
@@ -16,7 +17,6 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
-
       - name: Extract version from tag
         id: extract_version
         run: |
@@ -24,7 +24,16 @@ jobs:
           VERSION="${TAG_NAME#v}"              # Strip the 'v' prefix
           echo "TAG_VERSION=$VERSION" >> $GITHUB_ENV
           echo "RELEASE_TAG=$TAG_NAME" >> $GITHUB_ENV
-
+      - name: Download upload_url artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: upload-url
+  
+      - name: Load upload URL from artifact
+        run: |
+          UPLOAD_URL=$(cat upload_url.txt)
+          echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
+          echo $UPLOAD_URL
       - name: Setup GraalVM
         uses: graalvm/setup-graalvm@v1
         with:
@@ -51,18 +60,15 @@ jobs:
 
       - name: Build Native Image
         run: mvn -Pnative native:compile
-
       - name: List target directory
         run: ls -lh target/
-
-      - name: Upload Native Image to Existing Release
-        run: |
-          ASSET_PATH="target/graalpy-sentiment"  # <--- replace with your actual file name
-          if [[ ! -f "$ASSET_PATH" ]]; then
-            echo "❌ Expected binary '$ASSET_PATH' not found."
-            exit 1
-          fi
-          echo "✅ Uploading $ASSET_PATH to release $RELEASE_TAG"
-          gh release upload "$RELEASE_TAG" "$ASSET_PATH" --clobber
+      - name: Upload Native Image Asset
+        id: upload-native-asset
+        uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        with:
+          upload_url: ${{ env.UPLOAD_URL }}
+          asset_path: ./target/graalpy-sentiment
+          asset_name: graalpy-sentiment
+          asset_content_type: application/octet-stream
