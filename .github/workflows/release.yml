@@ -29,6 +29,15 @@ jobs:
       with:
         name: upload-url
         path: upload_url.txt
+            retention-days: 1   
+    - name: Save tag name to file
+      run: echo "${{ github.ref_name }}" > tag_name.txt
+    
+    - name: Upload tag name as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: tag-name
+        path: tag_name.txt
         retention-days: 1        
   build:
     needs: create-release
