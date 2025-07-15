@@ -18,6 +18,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: tag-name
+          run-id: ${{ github.event.workflow_run.id }}
+          path: ./artifacts
 
       - name: Load tag name
         run: |
@@ -29,6 +31,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: upload-url
+          run-id: ${{ github.event.workflow_run.id }}
+          path: ./artifacts
 
       - name: Load upload URL
         run: |
