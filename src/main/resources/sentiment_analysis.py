@@ -14,7 +14,7 @@ def analyze_sentiment(text):
     )
     
     end = time.time()
-    print(f"[Python] Took {(end - start) * 1000:.2f} ms")
+    print(f"[Sentiment] Took {(end - start) * 1000:.2f} ms")
 
     return json.dumps({
         "score": sentiment_score,

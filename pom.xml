@@ -70,7 +70,7 @@
 				        	<goal>java</goal>
 				    	</goals>
 				    	<configuration>
-				       		<mainClass>com.example.GenerateTestSecrets</mainClass>
+				       		<mainClass>com.example.util.GenerateTestSecrets</mainClass>
 				        	<arguments>
 				        		<argument>${project.basedir}/.test-secrets/application-test.properties</argument>
 				       		</arguments>
