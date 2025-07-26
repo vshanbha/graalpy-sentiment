@@ -32,7 +32,7 @@ nbproject/
 # Build output folders
 /target/
 /build/
-
+/.test-secrets/
 # Spring specific
 /src/main/resources/static/
 
