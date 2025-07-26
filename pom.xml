@@ -25,9 +25,8 @@
 		    <artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
 		  <groupId>org.graalvm.polyglot</groupId>
@@ -41,13 +40,45 @@
             <version>${graalvm.version}</version>
         </dependency>
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-test</artifactId>
-		    <scope>test</scope>
-		</dependency>		
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
     </dependencies>
     <build>
         <plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+				    <systemPropertyVariables>
+				    	<spring.config.additional-location>
+				    		file:${project.basedir}/.test-secrets/
+				    	</spring.config.additional-location>
+				    </systemPropertyVariables>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.5.1</version>
+				<executions>
+			    	<execution>
+				    	<id>generate-test-secrets</id>
+				    	<phase>process-test-classes</phase>
+				    	<goals>
+				        	<goal>java</goal>
+				    	</goals>
+				    	<configuration>
+				       		<mainClass>com.example.GenerateTestSecrets</mainClass>
+				        	<arguments>
+				        		<argument>${project.basedir}/.test-secrets/application-test.properties</argument>
+				       		</arguments>
+				        	<classpathScope>test</classpathScope>
+				    	</configuration>
+			    	</execution>
+				</executions>
+			</plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -61,6 +92,30 @@
                 <configuration>
                     <mainClass>com.example.SentimentAnalysisController</mainClass>
                 </configuration>
+			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-resources-plugin</artifactId>
+			    <executions>
+			        <execution>
+			            <id>copy-test-properties</id>
+			            <phase>process-test-classes</phase>
+			            <goals>
+			                <goal>copy-resources</goal>
+			            </goals>
+			            <configuration>
+			                <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
+			                <resources>
+			                    <resource>
+			                        <directory>${project.basedir}/.test-secrets</directory>
+			                        <includes>
+			                            <include>application-test.properties</include>
+			                        </includes>
+			                    </resource>
+			                </resources>
+			            </configuration>
+			        </execution>
+			    </executions>
 			</plugin>
             <plugin>
                 <groupId>org.graalvm.buildtools</groupId>
