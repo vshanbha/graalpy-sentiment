@@ -49,6 +49,9 @@
       "type": "[Ljavax.management.openmbean.CompositeData;"
     },
     {
+      "type": "[Lorg.springframework.boot.context.config.ConfigDataLocation;"
+    },
+    {
       "type": "[Lorg.springframework.core.annotation.AnnotationAttributes;"
     },
     {
@@ -113,6 +116,72 @@
     },
     {
       "type": "com.datastax.oss.driver.api.core.CqlSession"
+    },
+    {
+      "type": "com.example.SecurityConfig",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "authManager",
+          "parameterTypes": [
+            "org.springframework.security.config.annotation.web.builders.HttpSecurity",
+            "org.springframework.security.crypto.password.PasswordEncoder"
+          ]
+        },
+        {
+          "name": "filterChain",
+          "parameterTypes": [
+            "org.springframework.security.config.annotation.web.builders.HttpSecurity"
+          ]
+        },
+        {
+          "name": "passwordEncoder",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "com.example.SecurityConfig$$SpringCGLIB$$0",
+      "allDeclaredFields": true,
+      "fields": [
+        {
+          "name": "CGLIB$FACTORY_DATA"
+        }
+      ],
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "CGLIB$SET_STATIC_CALLBACKS",
+          "parameterTypes": [
+            "org.springframework.cglib.proxy.Callback[]"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.example.SecurityConfig$$SpringCGLIB$$FastClass$$0",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Class"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "com.example.SecurityConfig$$SpringCGLIB$$FastClass$$1",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.lang.Class"
+          ]
+        }
+      ]
     },
     {
       "type": "com.example.SentimentAnalysisController",
@@ -382,6 +451,9 @@
     },
     {
       "type": "io.micrometer.context.ContextSnapshot"
+    },
+    {
+      "type": "io.micrometer.observation.ObservationRegistry"
     },
     {
       "type": "io.netty.buffer.PooledByteBufAllocator"
@@ -2038,6 +2110,16 @@
       "type": "org.slf4j.spi.LocationAwareLogger"
     },
     {
+      "type": "org.springframework.aop.SpringProxy"
+    },
+    {
+      "type": "org.springframework.aop.framework.Advised"
+    },
+    {
+      "type": "org.springframework.aop.framework.AdvisedSupport",
+      "allDeclaredFields": true
+    },
+    {
       "type": "org.springframework.aop.framework.AopInfrastructureBean"
     },
     {
@@ -2051,6 +2133,14 @@
           ]
         }
       ]
+    },
+    {
+      "type": "org.springframework.aop.framework.ProxyCreatorSupport",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.aop.framework.ProxyFactoryBean",
+      "allDeclaredFields": true
     },
     {
       "type": "org.springframework.aop.framework.ProxyProcessorSupport",
@@ -2083,9 +2173,6 @@
       ]
     },
     {
-      "type": "org.springframework.aot.generate.Generated"
-    },
-    {
       "type": "org.springframework.aot.hint.annotation.Reflective"
     },
     {
@@ -2111,6 +2198,9 @@
     },
     {
       "type": "org.springframework.beans.factory.InitializingBean"
+    },
+    {
+      "type": "org.springframework.beans.factory.SmartInitializingSingleton"
     },
     {
       "type": "org.springframework.beans.factory.annotation.Autowired"
@@ -2157,15 +2247,7 @@
     },
     {
       "type": "org.springframework.boot.ApplicationProperties",
-      "allDeclaredFields": true,
-      "methods": [
-        {
-          "name": "setAllowBeanDefinitionOverriding",
-          "parameterTypes": [
-            "boolean"
-          ]
-        }
-      ]
+      "allDeclaredFields": true
     },
     {
       "type": "org.springframework.boot.ClearCachesApplicationListener",
@@ -2853,6 +2935,103 @@
       ]
     },
     {
+      "type": "org.springframework.boot.autoconfigure.security.ConditionalOnDefaultWebSecurity"
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.security.DefaultWebSecurityCondition",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.security.SecurityDataConfiguration"
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.security.SecurityProperties",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.security.reactive.ReactiveUserDetailsServiceAutoConfiguration$MissingAlternativeOrUserPropertiesConfigured",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.security.reactive.ReactiveUserDetailsServiceAutoConfiguration$RSocketEnabledOrReactiveWebApplication",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "authenticationEventPublisher",
+          "parameterTypes": [
+            "org.springframework.context.ApplicationEventPublisher"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "securityFilterChainRegistration",
+          "parameterTypes": [
+            "org.springframework.boot.autoconfigure.security.SecurityProperties"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration"
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration$MissingAlternativeOrUserPropertiesConfigured",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
       "type": "org.springframework.boot.autoconfigure.sql.init.DataSourceInitializationConfiguration"
     },
     {
@@ -3147,9 +3326,29 @@
           "parameterTypes": []
         },
         {
-          "name": "setPort",
+          "name": "getTomcat",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.web.ServerProperties$Tomcat",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "getThreads",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.autoconfigure.web.ServerProperties$Tomcat$Threads",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "setMax",
           "parameterTypes": [
-            "java.lang.Integer"
+            "int"
           ]
         }
       ]
@@ -3818,6 +4017,20 @@
       ]
     },
     {
+      "type": "org.springframework.boot.context.config.ConfigDataLocation",
+      "methods": [
+        {
+          "name": "of",
+          "parameterTypes": [
+            "java.lang.String"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.boot.context.config.ConfigDataLocationEditor"
+    },
+    {
       "type": "org.springframework.boot.context.config.ConfigDataNotFoundAction"
     },
     {
@@ -4301,6 +4514,17 @@
       ]
     },
     {
+      "type": "org.springframework.boot.web.servlet.AbstractFilterRegistrationBean",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.boot.web.servlet.DelegatingFilterProxyRegistrationBean$1"
+    },
+    {
       "type": "org.springframework.boot.web.servlet.DynamicRegistrationBean",
       "allDeclaredFields": true
     },
@@ -4394,6 +4618,9 @@
       "type": "org.springframework.context.ApplicationContextAware"
     },
     {
+      "type": "org.springframework.context.ApplicationEventPublisherAware"
+    },
+    {
       "type": "org.springframework.context.ApplicationListener"
     },
     {
@@ -4407,6 +4634,9 @@
     },
     {
       "type": "org.springframework.context.LifecycleProcessor"
+    },
+    {
+      "type": "org.springframework.context.MessageSourceAware"
     },
     {
       "type": "org.springframework.context.ResourceLoaderAware"
@@ -4448,6 +4678,9 @@
       "type": "org.springframework.context.annotation.Configuration"
     },
     {
+      "type": "org.springframework.context.annotation.ConfigurationClassEnhancer$EnhancedConfiguration"
+    },
+    {
       "type": "org.springframework.context.annotation.ConfigurationClassPostProcessor",
       "methods": [
         {
@@ -4463,7 +4696,13 @@
       ]
     },
     {
+      "type": "org.springframework.context.annotation.DependsOn"
+    },
+    {
       "type": "org.springframework.context.annotation.Import"
+    },
+    {
+      "type": "org.springframework.context.annotation.ImportAware"
     },
     {
       "type": "org.springframework.context.annotation.ImportRuntimeHints"
@@ -4473,6 +4712,9 @@
     },
     {
       "type": "org.springframework.context.annotation.Primary"
+    },
+    {
+      "type": "org.springframework.context.annotation.Role"
     },
     {
       "type": "org.springframework.context.annotation.Scope"
@@ -4505,6 +4747,9 @@
     },
     {
       "type": "org.springframework.context.support.PropertySourcesPlaceholderConfigurer"
+    },
+    {
+      "type": "org.springframework.core.DecoratingProxy"
     },
     {
       "type": "org.springframework.core.Ordered"
@@ -4672,6 +4917,9 @@
       "type": "org.springframework.mail.javamail.JavaMailSenderImpl"
     },
     {
+      "type": "org.springframework.messaging.rsocket.annotation.support.RSocketMessageHandler"
+    },
+    {
       "type": "org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
     },
     {
@@ -4705,37 +4953,597 @@
       "type": "org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler"
     },
     {
-      "type": "org.springframework.security.authentication.AuthenticationManager"
+      "type": "org.springframework.security.access.expression.AbstractSecurityExpressionHandler",
+      "allDeclaredFields": true
     },
     {
-      "type": "org.springframework.security.authentication.DefaultAuthenticationEventPublisher"
+      "type": "org.springframework.security.access.expression.SecurityExpressionHandler"
+    },
+    {
+      "type": "org.springframework.security.authentication.AnonymousAuthenticationProvider",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.authentication.AuthenticationEventPublisher"
+    },
+    {
+      "type": "org.springframework.security.authentication.AuthenticationManager",
+      "methods": [
+        {
+          "name": "authenticate",
+          "parameterTypes": [
+            "org.springframework.security.core.Authentication"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.authentication.AuthenticationManagerResolver"
+    },
+    {
+      "type": "org.springframework.security.authentication.AuthenticationProvider"
+    },
+    {
+      "type": "org.springframework.security.authentication.DefaultAuthenticationEventPublisher",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.authentication.ProviderManager",
+      "allDeclaredFields": true
     },
     {
       "type": "org.springframework.security.authentication.ReactiveAuthenticationManager"
     },
     {
+      "type": "org.springframework.security.authentication.event.AuthenticationFailureBadCredentialsEvent"
+    },
+    {
+      "type": "org.springframework.security.authentication.event.AuthenticationFailureCredentialsExpiredEvent"
+    },
+    {
+      "type": "org.springframework.security.authentication.event.AuthenticationFailureDisabledEvent"
+    },
+    {
+      "type": "org.springframework.security.authentication.event.AuthenticationFailureExpiredEvent"
+    },
+    {
+      "type": "org.springframework.security.authentication.event.AuthenticationFailureLockedEvent"
+    },
+    {
+      "type": "org.springframework.security.authentication.event.AuthenticationFailureProviderNotFoundEvent"
+    },
+    {
+      "type": "org.springframework.security.authentication.event.AuthenticationFailureProxyUntrustedEvent"
+    },
+    {
+      "type": "org.springframework.security.authentication.event.AuthenticationFailureServiceExceptionEvent"
+    },
+    {
+      "type": "org.springframework.security.authorization.AuthorizationManager"
+    },
+    {
+      "type": "org.springframework.security.config.ObjectPostProcessor"
+    },
+    {
+      "type": "org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.AbstractSecurityBuilder",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.SecurityBuilder"
+    },
+    {
+      "type": "org.springframework.security.config.annotation.SecurityConfigurer"
+    },
+    {
+      "type": "org.springframework.security.config.annotation.authentication.ProviderManagerBuilder"
+    },
+    {
+      "type": "org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "authenticationManagerBuilder",
+          "parameterTypes": [
+            "org.springframework.security.config.ObjectPostProcessor",
+            "org.springframework.context.ApplicationContext"
+          ]
+        },
+        {
+          "name": "enableGlobalAuthenticationAutowiredConfigurer",
+          "parameterTypes": [
+            "org.springframework.context.ApplicationContext"
+          ]
+        },
+        {
+          "name": "initializeAuthenticationProviderBeanManagerConfigurer",
+          "parameterTypes": [
+            "org.springframework.context.ApplicationContext"
+          ]
+        },
+        {
+          "name": "initializeUserDetailsBeanManagerConfigurer",
+          "parameterTypes": [
+            "org.springframework.context.ApplicationContext"
+          ]
+        },
+        {
+          "name": "setApplicationContext",
+          "parameterTypes": [
+            "org.springframework.context.ApplicationContext"
+          ]
+        },
+        {
+          "name": "setGlobalAuthenticationConfigurers",
+          "parameterTypes": [
+            "java.util.List"
+          ]
+        },
+        {
+          "name": "setObjectPostProcessor",
+          "parameterTypes": [
+            "org.springframework.security.config.ObjectPostProcessor"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.authentication.configuration.EnableGlobalAuthentication"
+    },
+    {
+      "type": "org.springframework.security.config.annotation.authentication.configuration.GlobalAuthenticationConfigurerAdapter",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.authentication.configuration.InitializeAuthenticationProviderBeanManagerConfigurer",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.configuration.AutowireBeanFactoryObjectPostProcessor",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.configuration.ObjectPostProcessorConfiguration",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "objectPostProcessor",
+          "parameterTypes": [
+            "org.springframework.beans.factory.config.AutowireCapableBeanFactory"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.HttpSecurityBuilder"
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.builders.HttpSecurity",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.builders.WebSecurity",
+      "allDeclaredFields": true
+    },
+    {
       "type": "org.springframework.security.config.annotation.web.configuration.EnableWebSecurity"
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.HttpSecurityConfiguration",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "httpSecurity",
+          "parameterTypes": []
+        },
+        {
+          "name": "setApplicationContext",
+          "parameterTypes": [
+            "org.springframework.context.ApplicationContext"
+          ]
+        },
+        {
+          "name": "setAuthenticationConfiguration",
+          "parameterTypes": [
+            "org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration"
+          ]
+        },
+        {
+          "name": "setContentNegotiationStrategy",
+          "parameterTypes": [
+            "org.springframework.web.accept.ContentNegotiationStrategy"
+          ]
+        },
+        {
+          "name": "setObjectPostProcessor",
+          "parameterTypes": [
+            "org.springframework.security.config.ObjectPostProcessor"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.OAuth2ImportSelector",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.ObservationConfiguration",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "authenticationManagerPostProcessor",
+          "parameterTypes": [
+            "org.springframework.beans.factory.ObjectProvider",
+            "org.springframework.beans.factory.ObjectProvider"
+          ]
+        },
+        {
+          "name": "filterChainDecoratorPostProcessor",
+          "parameterTypes": [
+            "org.springframework.beans.factory.ObjectProvider",
+            "org.springframework.beans.factory.ObjectProvider"
+          ]
+        },
+        {
+          "name": "webAuthorizationManagerPostProcessor",
+          "parameterTypes": [
+            "org.springframework.beans.factory.ObjectProvider",
+            "org.springframework.beans.factory.ObjectProvider"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.ObservationConfiguration$1",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.ObservationConfiguration$2",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.ObservationConfiguration$3",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.ObservationImportSelector",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.SpringWebMvcImportSelector",
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "requestDataValueProcessor",
+          "parameterTypes": []
+        },
+        {
+          "name": "springSecurityHandlerMappingIntrospectorBeanDefinitionRegistryPostProcessor",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$1"
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.util.List"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$HandlerMappingIntrospectorCacheFilterFactoryBean",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        },
+        {
+          "name": "conversionServicePostProcessor",
+          "parameterTypes": []
+        },
+        {
+          "name": "delegatingApplicationListener",
+          "parameterTypes": []
+        },
+        {
+          "name": "privilegeEvaluator",
+          "parameterTypes": []
+        },
+        {
+          "name": "setFilterChainProxySecurityConfigurer",
+          "parameterTypes": [
+            "org.springframework.security.config.ObjectPostProcessor",
+            "org.springframework.beans.factory.config.ConfigurableListableBeanFactory"
+          ]
+        },
+        {
+          "name": "setFilterChains",
+          "parameterTypes": [
+            "java.util.List"
+          ]
+        },
+        {
+          "name": "springSecurityFilterChain",
+          "parameterTypes": [
+            "org.springframework.beans.factory.ObjectProvider"
+          ]
+        },
+        {
+          "name": "springSecurityPathPatternParserBeanDefinitionRegistryPostProcessor",
+          "parameterTypes": []
+        },
+        {
+          "name": "webSecurityExpressionHandler",
+          "parameterTypes": []
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$1"
+    },
+    {
+      "type": "org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "java.util.List"
+          ]
+        }
+      ]
     },
     {
       "type": "org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity"
     },
     {
+      "type": "org.springframework.security.config.crypto.RsaKeyConversionServicePostProcessor"
+    },
+    {
       "type": "org.springframework.security.config.http.SessionCreationPolicy"
+    },
+    {
+      "type": "org.springframework.security.context.DelegatingApplicationListener",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.core.userdetails.UserDetailsService"
+    },
+    {
+      "type": "org.springframework.security.crypto.password.DelegatingPasswordEncoder",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.crypto.password.PasswordEncoder"
+    },
+    {
+      "type": "org.springframework.security.data.repository.query.SecurityEvaluationContextExtension"
     },
     {
       "type": "org.springframework.security.oauth2.client.registration.ClientRegistration"
     },
     {
+      "type": "org.springframework.security.oauth2.client.registration.ClientRegistrationRepository"
+    },
+    {
+      "type": "org.springframework.security.oauth2.client.web.OAuth2AuthorizedClientRepository"
+    },
+    {
+      "type": "org.springframework.security.oauth2.jwt.JwtDecoder"
+    },
+    {
       "type": "org.springframework.security.oauth2.server.authorization.OAuth2Authorization"
     },
     {
+      "type": "org.springframework.security.oauth2.server.resource.BearerTokenError"
+    },
+    {
       "type": "org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthenticationToken"
+    },
+    {
+      "type": "org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector"
+    },
+    {
+      "type": "org.springframework.security.oauth2.server.resource.introspection.ReactiveOpaqueTokenIntrospector"
     },
     {
       "type": "org.springframework.security.rsocket.core.SecuritySocketAcceptorInterceptor"
     },
     {
       "type": "org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistrationRepository"
+    },
+    {
+      "type": "org.springframework.security.web.AuthenticationEntryPoint"
+    },
+    {
+      "type": "org.springframework.security.web.DefaultSecurityFilterChain",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.FilterChainProxy",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.SecurityFilterChain"
+    },
+    {
+      "type": "org.springframework.security.web.access.AuthorizationManagerWebInvocationPrivilegeEvaluator$HttpServletRequestTransformer"
+    },
+    {
+      "type": "org.springframework.security.web.access.ExceptionTranslationFilter",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.access.HandlerMappingIntrospectorRequestTransformer",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": [
+            "org.springframework.web.servlet.handler.HandlerMappingIntrospector"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "org.springframework.security.web.access.RequestMatcherDelegatingWebInvocationPrivilegeEvaluator",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.access.WebInvocationPrivilegeEvaluator"
+    },
+    {
+      "type": "org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.access.intercept.AuthorizationFilter",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.access.intercept.RequestMatcherDelegatingAuthorizationManager",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.authentication.DelegatingAuthenticationEntryPoint",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.authentication.logout.LogoutFilter",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.authentication.logout.LogoutHandler"
+    },
+    {
+      "type": "org.springframework.security.web.authentication.logout.LogoutSuccessEventPublishingLogoutHandler",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.authentication.logout.LogoutSuccessHandler"
+    },
+    {
+      "type": "org.springframework.security.web.authentication.session.AbstractSessionFixationProtectionStrategy",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.authentication.session.ChangeSessionIdAuthenticationStrategy",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.authentication.session.SessionAuthenticationStrategy"
+    },
+    {
+      "type": "org.springframework.security.web.authentication.www.BasicAuthenticationFilter",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer"
+    },
+    {
+      "type": "org.springframework.security.web.context.SecurityContextHolderFilter",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.header.HeaderWriterFilter",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.savedrequest.RequestCacheAwareFilter",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.servlet.support.csrf.CsrfRequestDataValueProcessor",
+      "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter",
+      "allDeclaredFields": true
     },
     {
       "type": "org.springframework.session.Session"
@@ -4786,6 +5594,9 @@
       "type": "org.springframework.web.bind.annotation.Mapping"
     },
     {
+      "type": "org.springframework.web.bind.annotation.PostMapping"
+    },
+    {
       "type": "org.springframework.web.bind.annotation.RequestMapping"
     },
     {
@@ -4826,8 +5637,17 @@
       "allDeclaredFields": true
     },
     {
+      "type": "org.springframework.web.cors.CorsConfigurationSource"
+    },
+    {
+      "type": "org.springframework.web.cors.PreFlightRequestHandler"
+    },
+    {
       "type": "org.springframework.web.filter.CharacterEncodingFilter",
       "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.web.filter.DelegatingFilterProxy"
     },
     {
       "type": "org.springframework.web.filter.FormContentFilter",
@@ -4844,6 +5664,16 @@
     {
       "type": "org.springframework.web.filter.RequestContextFilter",
       "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.web.filter.ServletRequestPathFilter",
+      "allDeclaredFields": true,
+      "methods": [
+        {
+          "name": "<init>",
+          "parameterTypes": []
+        }
+      ]
     },
     {
       "type": "org.springframework.web.method.support.CompositeUriComponentsContributor",
@@ -4867,6 +5697,9 @@
     },
     {
       "type": "org.springframework.web.reactive.config.WebFluxConfigurer"
+    },
+    {
+      "type": "org.springframework.web.reactive.function.client.ExchangeFilterFunction"
     },
     {
       "type": "org.springframework.web.reactive.function.client.WebClient"
@@ -4952,6 +5785,10 @@
         },
         {
           "name": "httpRequestHandlerAdapter",
+          "parameterTypes": []
+        },
+        {
+          "name": "mvcHandlerMappingIntrospector",
           "parameterTypes": []
         },
         {
@@ -5070,6 +5907,10 @@
       "allDeclaredFields": true
     },
     {
+      "type": "org.springframework.web.servlet.handler.HandlerMappingIntrospector",
+      "allDeclaredFields": true
+    },
+    {
       "type": "org.springframework.web.servlet.handler.MatchableHandlerMapping"
     },
     {
@@ -5118,6 +5959,9 @@
     {
       "type": "org.springframework.web.servlet.support.AbstractFlashMapManager",
       "allDeclaredFields": true
+    },
+    {
+      "type": "org.springframework.web.servlet.support.RequestDataValueProcessor"
     },
     {
       "type": "org.springframework.web.servlet.support.SessionFlashMapManager",
@@ -5623,6 +6467,16 @@
     {
       "type": {
         "proxy": [
+          "org.springframework.security.authentication.AuthenticationManager",
+          "org.springframework.aop.SpringProxy",
+          "org.springframework.aop.framework.Advised",
+          "org.springframework.core.DecoratingProxy"
+        ]
+      }
+    },
+    {
+      "type": {
+        "proxy": [
           "org.springframework.web.bind.annotation.RequestMapping"
         ]
       }
@@ -5769,34 +6623,13 @@
       "glob": "META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.replacements"
     },
     {
-      "glob": "application-default.properties"
-    },
-    {
-      "glob": "application-default.xml"
-    },
-    {
-      "glob": "application-default.yaml"
-    },
-    {
-      "glob": "application-default.yml"
-    },
-    {
-      "glob": "application.properties"
-    },
-    {
-      "glob": "application.xml"
-    },
-    {
-      "glob": "application.yaml"
-    },
-    {
-      "glob": "application.yml"
-    },
-    {
       "glob": "banner.txt"
     },
     {
       "glob": "com/example"
+    },
+    {
+      "glob": "com/example/SecurityConfig.class"
     },
     {
       "glob": "com/oracle/graal/python/builtins/PythonBuiltins.class"
@@ -6346,30 +7179,6 @@
     },
     {
       "glob": "com/oracle/graal/python/builtins/objects/module/Frozen__PHELLO___SPAM.bin"
-    },
-    {
-      "glob": "config/application-default.properties"
-    },
-    {
-      "glob": "config/application-default.xml"
-    },
-    {
-      "glob": "config/application-default.yaml"
-    },
-    {
-      "glob": "config/application-default.yml"
-    },
-    {
-      "glob": "config/application.properties"
-    },
-    {
-      "glob": "config/application.xml"
-    },
-    {
-      "glob": "config/application.yaml"
-    },
-    {
-      "glob": "config/application.yml"
     },
     {
       "glob": "git.properties"
@@ -8274,6 +9083,75 @@
       "glob": "org/springframework/boot/autoconfigure/orm/jpa/EntityManagerFactoryDependsOnPostProcessor.class"
     },
     {
+      "glob": "org/springframework/boot/autoconfigure/security/ConditionalOnDefaultWebSecurity.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/DefaultWebSecurityCondition$Beans.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/DefaultWebSecurityCondition$Classes.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/DefaultWebSecurityCondition.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/SecurityDataConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/reactive/ReactiveUserDetailsServiceAutoConfiguration$MissingAlternativeOrUserPropertiesConfigured$MissingAlternative.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/reactive/ReactiveUserDetailsServiceAutoConfiguration$MissingAlternativeOrUserPropertiesConfigured$NameConfigured.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/reactive/ReactiveUserDetailsServiceAutoConfiguration$MissingAlternativeOrUserPropertiesConfigured$PasswordConfigured.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/reactive/ReactiveUserDetailsServiceAutoConfiguration$MissingAlternativeOrUserPropertiesConfigured.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/reactive/ReactiveUserDetailsServiceAutoConfiguration$RSocketEnabledOrReactiveWebApplication$RSocketSecurityEnabledCondition.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/reactive/ReactiveUserDetailsServiceAutoConfiguration$RSocketEnabledOrReactiveWebApplication$ReactiveWebApplicationCondition.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/reactive/ReactiveUserDetailsServiceAutoConfiguration$RSocketEnabledOrReactiveWebApplication.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/reactive/ReactiveUserDetailsServiceAutoConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/servlet/SecurityAutoConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/servlet/SecurityFilterAutoConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$SecurityFilterChainConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration$WebSecurityEnablerConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/servlet/SpringBootWebSecurityConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/servlet/UserDetailsServiceAutoConfiguration$MissingAlternativeOrUserPropertiesConfigured$MissingAlternative.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/servlet/UserDetailsServiceAutoConfiguration$MissingAlternativeOrUserPropertiesConfigured$NameConfigured.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/servlet/UserDetailsServiceAutoConfiguration$MissingAlternativeOrUserPropertiesConfigured$PasswordConfigured.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/servlet/UserDetailsServiceAutoConfiguration$MissingAlternativeOrUserPropertiesConfigured.class"
+    },
+    {
+      "glob": "org/springframework/boot/autoconfigure/security/servlet/UserDetailsServiceAutoConfiguration.class"
+    },
+    {
       "glob": "org/springframework/boot/autoconfigure/sql/init/DataSourceInitializationConfiguration.class"
     },
     {
@@ -8496,16 +9374,79 @@
       "glob": "org/springframework/context/annotation/Import.class"
     },
     {
+      "glob": "org/springframework/context/annotation/ImportAware.class"
+    },
+    {
       "glob": "org/springframework/context/annotation/ImportBeanDefinitionRegistrar.class"
     },
     {
       "glob": "org/springframework/context/annotation/ImportRuntimeHints.class"
     },
     {
+      "glob": "org/springframework/context/annotation/Role.class"
+    },
+    {
       "glob": "org/springframework/core/Ordered.class"
     },
     {
       "glob": "org/springframework/core/annotation/Order.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/authentication/configuration/AuthenticationConfiguration$AuthenticationManagerDelegator.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/authentication/configuration/AuthenticationConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/authentication/configuration/AuthenticationConfiguration$EnableGlobalAuthenticationAutowiredConfigurer.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/authentication/configuration/AuthenticationConfiguration$LazyPasswordEncoder.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/authentication/configuration/AuthenticationConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/authentication/configuration/EnableGlobalAuthentication.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/configuration/ObjectPostProcessorConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/EnableWebSecurity.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/HttpSecurityConfiguration$DefaultPasswordEncoderAuthenticationManagerBuilder.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/HttpSecurityConfiguration$LazyPasswordEncoder.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/HttpSecurityConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/OAuth2ImportSelector.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/ObservationConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/ObservationImportSelector.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/SpringWebMvcImportSelector.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/WebMvcSecurityConfiguration.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration$AnnotationAwareOrderComparator.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration$CompositeFilterChainProxy.class"
+    },
+    {
+      "glob": "org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class"
     },
     {
       "glob": "org/springframework/web/context/ServletContextAware.class"
