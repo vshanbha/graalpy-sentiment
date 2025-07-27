@@ -14,24 +14,25 @@ raw_password = os.getenv("API_PASSWORD")
 if not cli_username or not raw_password:
     raise RuntimeError("API_USERNAME and API_PASSWORD environment variables must be set")
 
-# Hash password at startup
-hashed_password = bcrypt.hashpw(raw_password.encode('utf-8'), bcrypt.gensalt())
+raw_users = {
+    cli_username: raw_password,
+}
+
+
+auth_headers = {}
+for username, password in raw_users.items():
+    # Hash password (expensive, done only once)
+    hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+
+    # Generate Base64 header for Basic Auth
+    auth_string = f"{username}:{password}".encode("utf-8")
+    encoded = base64.b64encode(auth_string).decode("utf-8")
+    auth_headers[f"Basic {encoded}"] = username  # Cach
 
 
 def check_auth(auth_header):
-    """Validate Basic Auth header."""
-    if not auth_header or not auth_header.startswith("Basic "):
-        return False
-
-    try:
-        encoded_credentials = auth_header.split(" ")[1]
-        decoded_credentials = base64.b64decode(encoded_credentials).decode("utf-8")
-        username, password = decoded_credentials.split(":", 1)
-    except Exception:
-        return False
-
-    # Check username and bcrypt password
-    return username == cli_username and bcrypt.checkpw(password.encode('utf-8'), hashed_password)
+    """Fast check using precomputed headers (O(1) lookup)."""
+    return auth_header in auth_headers
 
 
 @app.before_request
