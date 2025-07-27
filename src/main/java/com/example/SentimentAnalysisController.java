@@ -50,24 +50,10 @@ public class SentimentAnalysisController {
 		SpringApplication.run(SentimentAnalysisController.class, args);
 	}
 
-	private boolean isGraalVM() {
-	    String vmName = System.getProperty("java.vm.name");
-	    String javaVendor = System.getProperty("java.vendor");
-	    return (vmName != null && vmName.toLowerCase().contains("graalvm"))
-	            || (javaVendor != null && javaVendor.toLowerCase().contains("graalvm"));
-	}
-	
 	@PostConstruct
 	public void initialize() {
 		try {
-			Context.Builder builder = GraalPyResources.contextBuilder()
-					.allowAllAccess(true);
-			if (isGraalVM()) {
-			    builder.option("engine.MultiTier", "true");
-			    builder.option("engine.CompileImmediately", "false");
-			}			// 
-			polyglotContext = builder.build();
-			
+			polyglotContext = GraalPyResources.createContext();
 			
 			String scriptPath = (externalPythonScript != null && !externalPythonScript.isEmpty()) ? externalPythonScript
 					: pythonScriptPath;
@@ -110,7 +96,6 @@ public class SentimentAnalysisController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Python function not initialized.");
 		}
 		
-		polyglotContext.enter();
 		try {
 			Value result = analyzeSentimentFunction.execute(text);
 			return ResponseEntity.ok(result.asString());
@@ -119,8 +104,6 @@ public class SentimentAnalysisController {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 					.body("An error occurred while analyzing sentiment.");
-		} finally {
-			polyglotContext.leave();
 		}
 	}
 
