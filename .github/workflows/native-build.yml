@@ -64,8 +64,6 @@ jobs:
         with:
           java-version: '24'
           distribution: 'graalvm'
-          components: native-image
-          cache: none
           native-image-job-reports: true
 
       - name: Verify GraalVM Environment
