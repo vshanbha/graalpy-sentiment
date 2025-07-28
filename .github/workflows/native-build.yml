@@ -24,7 +24,7 @@ jobs:
         run: |
           REF="${{ github.event.workflow_run.head_branch || github.event.workflow_run.event }}"
           # Extract the tag name from ref
-          TAG=$(echo "${{ github.event.workflow_run.head_commit.message }}" | grep -o 'v[0-9]\+\.[0-9]\+\.[0-9]\+')
+          TAG=$(echo "$REF" | grep -o 'v[0-9]\+\.[0-9]\+\.[0-9]\+')
           if [[ -z "$TAG" ]]; then
             echo "❌ Unable to determine tag from workflow context."
             exit 1
