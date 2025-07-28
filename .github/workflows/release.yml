@@ -22,23 +22,10 @@ jobs:
         release_name: Release ${{ github.ref_name }}
         draft: false
         prerelease: false
-    - name: Save upload URL to file
-      run: echo "${{ steps.create_release.outputs.upload_url }}" > upload_url.txt
-    - name: Upload upload_url as artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: upload-url
-        path: upload_url.txt
-        retention-days: 1   
-    - name: Save tag name to file
-      run: echo "${{ github.ref_name }}" > tag_name.txt
-    
-    - name: Upload tag name as artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: tag-name
-        path: tag_name.txt
-        retention-days: 1        
+    - name: Print Release Info
+      run: |
+        echo "Created release for tag: ${{ github.ref_name }}"   
+        
   build:
     needs: create-release
     runs-on: ubuntu-latest
