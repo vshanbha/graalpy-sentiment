@@ -50,7 +50,7 @@ jobs:
 
       - name: Load upload URL
         run: |
-          UPLOAD_URL=$(cat ./artifacts/upload_url.txt)
+          UPLOAD_URL=$(cat ./artifacts/upload_url.txt | tr -d '\n\r')
           echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
 
       - name: Checkout source for tag
