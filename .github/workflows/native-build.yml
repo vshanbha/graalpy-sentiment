@@ -38,13 +38,13 @@ jobs:
 
       - name: Load tag name
         run: |
-          TAG_NAME=$(cat ${{ runner.temp }}/artifacts/tag_name.txt)
+          TAG_NAME=$(cat ${{ runner.temp }}/artifacts/tag_name.txt | tr -d '\n')
           if [[ ! "$TAG_NAME" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "❌ Invalid tag name: $TAG_NAME"
             exit 1
           fi
-          echo "RELEASE_TAG=$TAG_NAME" >> $GITHUB_ENV
-          echo "TAG_VERSION=${TAG_NAME#v}" >> $GITHUB_ENV
+          echo "RELEASE_TAG=$(echo "$TAG_NAME" | tr -d '\n')" >> $GITHUB_ENV
+          echo "TAG_VERSION=$(echo "${TAG_NAME#v}" | tr -d '\n')" >> $GITHUB_ENV
 
       - name: Download upload_url artifact
         uses: actions/download-artifact@v4
@@ -56,12 +56,12 @@ jobs:
 
       - name: Load upload URL
         run: |
-          UPLOAD_URL=$(cat ${{ runner.temp }}/artifacts/upload_url.txt)
+          UPLOAD_URL=$(cat ${{ runner.temp }}/artifacts/upload_url.txt | tr -d '\n')
           if [[ ! "$UPLOAD_URL" =~ ^https://.* ]]; then
             echo "❌ Invalid upload URL: $UPLOAD_URL"
             exit 1
           fi
-          echo "UPLOAD_URL=$UPLOAD_URL" >> $GITHUB_ENV
+          echo "UPLOAD_URL=$(echo "$UPLOAD_URL" | tr -d '\n')" >> $GITHUB_ENV
 
       - name: Checkout source for tag
         uses: actions/checkout@v4
