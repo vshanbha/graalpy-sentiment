@@ -24,10 +24,24 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }} 
           merge-multiple: true
       
-      - name: List contents of artifacts
+      - name: Verify artifact integrity
         run: |
-          echo "Listing contents of downloaded artifacts:"
-          ls -R ${{ runner.temp }}/artifacts
+          echo "Verifying checksums of downloaded artifacts..."
+          echo "Expected checksum for tag_name.txt: ${{ secrets.TAG_NAME_CHECKSUM }}"
+          echo "Expected checksum for upload_url.txt: ${{ secrets.UPLOAD_URL_CHECKSUM }}"
+          echo "Computing checksum for tag_name.txt..."
+          TAG_NAME_CHECKSUM=$(sha256sum ${{ runner.temp }}/artifacts/tag_name.txt | awk '{print $1}')
+          if [[ "$TAG_NAME_CHECKSUM" != "${{ secrets.TAG_NAME_CHECKSUM }}" ]]; then
+            echo "❌ Checksum mismatch for tag_name.txt"
+            exit 1
+          fi
+          echo "Computing checksum for upload_url.txt..."
+          UPLOAD_URL_CHECKSUM=$(sha256sum ${{ runner.temp }}/artifacts/upload_url.txt | awk '{print $1}')
+          if [[ "$UPLOAD_URL_CHECKSUM" != "${{ secrets.UPLOAD_URL_CHECKSUM }}" ]]; then
+            echo "❌ Checksum mismatch for upload_url.txt"
+            exit 1
+          fi
+          echo "✅ All checksums match. Artifacts are verified."
       - name: Download tag-name artifact
         uses: actions/download-artifact@v4
         with:
